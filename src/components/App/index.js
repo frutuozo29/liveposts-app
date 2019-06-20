@@ -16,16 +16,24 @@ import { main, cards, btn_add } from './styles'
 import Header from '../Header'
 import Card from '../Card'
 
-const App = ({ isLoading, hasError, posts, getPosts }) => {
+const App = ({ isLoading, hasError, posts, getPosts, updateVotes }) => {
 
   useEffect(() => { !posts.length && !isLoading && !hasError && getPosts() }, [isLoading, hasError, posts, getPosts])
+
   return (
     <div className="App">
       <Header />
       <button css={btn_add}>Novo Post</button>
       <div css={main}>
         <div css={cards}>
-          {posts && posts.map(post => <Card key={post._id} {...post} />)}
+          {posts && posts.map(post =>
+            <Card
+              {...{ post }}
+              key={post._id}
+              upVote={(() => updateVotes(post._id, 1))}
+              downVote={(() => updateVotes(post._id, -1))}
+            />
+          )}
         </div>
       </div>
     </div>
