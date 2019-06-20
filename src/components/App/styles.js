@@ -4,7 +4,7 @@ export const main = css`
   padding: 0 48px 24px;
 
   @media (max-width: 420px) {
-    padding: 0 24px 12px;  
+    padding: 0 12px 24px;  
   }
 `
 
@@ -18,7 +18,7 @@ export const btn_add = css`
   cursor: pointer;
   
   @media (max-width: 420px) {
-    margin: 18px 24px;  
+    margin: 18px 12px;  
   }
 `
 

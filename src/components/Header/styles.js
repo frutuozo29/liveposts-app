@@ -11,7 +11,7 @@ export const header = css`
   padding: 12px 48px;
 
   @media (max-width: 420px) {
-    padding: 10px 24px;  
+    padding: 10px 12px;  
   }
 `
 

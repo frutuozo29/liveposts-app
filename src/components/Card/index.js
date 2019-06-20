@@ -9,7 +9,6 @@ import {
 
 const Card = ({ post, upVote, downVote }) => (
   <div css={card}>
-    {console.log(post)}
     <h3 css={card_title}>{post.name}</h3>
     <p css={card_description}>{post.description}</p>
     <div css={card_footer}>

@@ -16,10 +16,7 @@ export const getPosts = () => (dispacth) => {
       return response
     })
     .then(response => response.json())
-    .then(({ posts }) => {
-      console.log(posts)
-      dispacth(getPostsRequestSucess(posts))
-    })
+    .then(({ posts }) => dispacth(getPostsRequestSucess(posts)))
     .catch(() => dispacth(getPostsRequestError()))
 }
 
@@ -49,3 +46,5 @@ export const updateVotes = (id, vote) => (dispacth) => {
     .then(response => dispacth(updateVotesSucess(response)))
     .catch(() => dispacth(updateVotesError()))
 }
+
+export const setVotes = (id, votes) => ({ type: 'SET_VOTES', payload: { id, votes } })
