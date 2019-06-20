@@ -1,10 +1,10 @@
 import { css } from '@emotion/core'
 
 export const main = css`
-  padding: 0 48px;
+  padding: 0 48px 24px;
 
   @media (max-width: 420px) {
-    padding: 0 24px;  
+    padding: 0 24px 12px;  
   }
 `
 
