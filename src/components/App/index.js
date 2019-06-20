@@ -8,17 +8,24 @@ import { useEffect } from 'react'
 import { bindActionCreators } from 'redux'
 // react-redux
 import { connect } from 'react-redux'
-
 import * as postActions from '../../actions/post'
+import { apiBaseUrl } from '../../actions'
+
+import socketIOClient from 'socket.io-client'
 
 import { main, cards, btn_add } from './styles'
 
 import Header from '../Header'
 import Card from '../Card'
 
-const App = ({ isLoading, hasError, posts, getPosts, updateVotes }) => {
+const App = ({ isLoading, hasError, posts, getPosts, updateVotes, setVotes }) => {
 
   useEffect(() => { !posts.length && !isLoading && !hasError && getPosts() }, [isLoading, hasError, posts, getPosts])
+
+  const socket = socketIOClient(apiBaseUrl)
+  socket.on('newVote', (data) => {
+    setVotes(data.id, data.votes)
+  })
 
   return (
     <div className="App">
@@ -26,7 +33,7 @@ const App = ({ isLoading, hasError, posts, getPosts, updateVotes }) => {
       <button css={btn_add}>Novo Post</button>
       <div css={main}>
         <div css={cards}>
-          {posts && posts.map(post =>
+          {posts && posts.sort((a, b) => b.votes - a.votes).map(post =>
             <Card
               {...{ post }}
               key={post._id}

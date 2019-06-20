@@ -45,6 +45,13 @@ const posts = (state = initialState, action) => {
         isPosting: false,
         hasPostError: true
       }
+    case 'SET_VOTES':
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item._id === action.payload.id ? { ...item, votes: action.payload.votes } : item
+        )
+      }
     default:
       return state
   }
