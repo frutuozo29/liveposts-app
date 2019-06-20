@@ -7,8 +7,7 @@ import {
   card_actions, read_more, icon_action_up, icon_action_down
 } from './styles'
 
-const Card = (post) => (
-
+const Card = ({ post, upVote, downVote }) => (
   <div css={card}>
     {console.log(post)}
     <h3 css={card_title}>{post.name}</h3>
@@ -16,9 +15,17 @@ const Card = (post) => (
     <div css={card_footer}>
       <a css={read_more} href="/#">Leia mais...</a>
       <div css={card_actions}>
-        <i className="far fa-thumbs-up" css={icon_action_up}></i>
+        <i
+          className="far fa-thumbs-up"
+          onClick={upVote}
+          css={icon_action_up}
+        ></i>
         <h5>{post.votes}</h5>
-        <i className="far fa-thumbs-down" css={icon_action_down}></i>
+        <i
+          className="far fa-thumbs-down"
+          onClick={downVote}
+          css={icon_action_down}
+        ></i>
       </div>
     </div>
   </div>

@@ -2,28 +2,48 @@ const initialState = {
   items: [],
   count: 0,
   isLoading: false,
-  hasError: false
+  hasError: false,
+  isPosting: false,
+  hasPostError: false
 }
 
 const posts = (state = initialState, action) => {
   switch (action.type) {
-    case 'POSTS_REQUEST':
+    case 'GET_POSTS_REQUEST':
       return {
         ...state,
         isLoading: true
       }
-    case 'POSTS_REQUEST_SUCESS':
+    case 'GET_POSTS_REQUEST_SUCESS':
       return {
         ...state,
         isLoading: false,
         items: action.payload
       }
-    case 'POSTS_REQUEST_ERROR':
+    case 'GET_POSTS_REQUEST_ERROR':
       return {
         ...state,
         isLoading: false,
         hasError: true,
         posts: []
+      }
+    case 'UPDATE_VOTES_REQUEST':
+      return {
+        ...state,
+        isPosting: true,
+        hasPostError: false
+      }
+    case 'UPDATE_VOTES_SUCCESS':
+      return {
+        ...state,
+        isPosting: false,
+        hasPostError: false
+      }
+    case 'UPDATE_VOTES_ERROR':
+      return {
+        ...state,
+        isPosting: false,
+        hasPostError: true
       }
     default:
       return state
