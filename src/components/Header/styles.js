@@ -9,6 +9,10 @@ export const header = css`
   align-content: center;
   border-bottom: 1px solid #FFF;
   padding: 12px 48px;
+
+  @media (max-width: 420px) {
+    padding: 10px 24px;  
+  }
 `
 
 export const title = css`

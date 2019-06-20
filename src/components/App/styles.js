@@ -1,7 +1,11 @@
 import { css } from '@emotion/core'
 
 export const main = css`
-  padding: 0 48px 76px;
+  padding: 0 48px;
+
+  @media (max-width: 420px) {
+    padding: 0 24px;  
+  }
 `
 
 export const btn_add = css`
@@ -12,6 +16,10 @@ export const btn_add = css`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  
+  @media (max-width: 420px) {
+    margin: 18px 24px;  
+  }
 `
 
 export const cards = css`
