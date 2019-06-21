@@ -42,7 +42,6 @@ export const updateVotes = (id, vote) => (dispacth) => {
 
       return response
     })
-    .then(response => response.json())
     .then(response => dispacth(updateVotesSucess(response)))
     .catch(() => dispacth(updateVotesError()))
 }
