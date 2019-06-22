@@ -2,7 +2,7 @@ import { apiBaseUrl } from '../../actions'
 
 export const getPostsRequest = () => ({ type: 'GET_POSTS_REQUEST' })
 
-export const getPostsRequestSucess = (payload) => ({ type: 'GET_POSTS_REQUEST_SUCESS', payload })
+export const getPostsRequestSuccess = (payload) => ({ type: 'GET_POSTS_REQUEST_SUCCESS', payload })
 
 export const getPostsRequestError = () => ({ type: 'GET_POSTS_REQUEST_ERROR' })
 
@@ -16,13 +16,13 @@ export const getPosts = () => (dispacth) => {
       return response
     })
     .then(response => response.json())
-    .then(({ posts }) => dispacth(getPostsRequestSucess(posts)))
+    .then(({ posts }) => dispacth(getPostsRequestSuccess(posts)))
     .catch(() => dispacth(getPostsRequestError()))
 }
 
 export const updateVotesRequest = () => ({ type: 'UPDATE_VOTES_REQUEST' })
 
-export const updateVotesSucess = (response) => ({ type: 'UPDATE_VOTES_SUCCESS', payload: response })
+export const updateVotesSuccess = () => ({ type: 'UPDATE_VOTES_SUCCESS' })
 
 export const updateVotesError = () => ({ type: 'UPDATE_VOTES_ERROR' })
 
@@ -42,7 +42,7 @@ export const updateVotes = (id, vote) => (dispacth) => {
 
       return response
     })
-    .then(response => dispacth(updateVotesSucess(response)))
+    .then(() => dispacth(updateVotesSuccess()))
     .catch(() => dispacth(updateVotesError()))
 }
 

@@ -14,7 +14,7 @@ const posts = (state = initialState, action) => {
         ...state,
         isLoading: true
       }
-    case 'GET_POSTS_REQUEST_SUCESS':
+    case 'GET_POSTS_REQUEST_SUCCESS':
       return {
         ...state,
         isLoading: false,
