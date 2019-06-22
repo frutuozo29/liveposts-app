@@ -8,7 +8,7 @@ import {
 } from './styles'
 
 const Card = ({ post, upVote, downVote }) => (
-  <div css={card}>
+  <div css={card} data-testid="card">
     <h3 css={card_title}>{post.name}</h3>
     <p css={card_description}>{post.description}</p>
     <div css={card_footer}>
@@ -18,12 +18,14 @@ const Card = ({ post, upVote, downVote }) => (
           className="far fa-thumbs-up"
           onClick={upVote}
           css={icon_action_up}
+          data-testid="up-vote"
         ></i>
         <h5>{post.votes}</h5>
         <i
           className="far fa-thumbs-down"
           onClick={downVote}
           css={icon_action_down}
+          data-testid="down-vote"
         ></i>
       </div>
     </div>

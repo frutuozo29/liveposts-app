@@ -40,7 +40,7 @@ const App = () => {
 
 
   return (
-    <div className="App">
+    <div className="App" data-testid="app">
       <Header />
       <button css={btn_add}>Novo Post</button>
       <div css={main}>
