@@ -25,7 +25,7 @@ const posts = (state = initialState, action) => {
         ...state,
         isLoading: false,
         hasError: true,
-        posts: []
+        items: []
       }
     case 'UPDATE_VOTES_REQUEST':
       return {
