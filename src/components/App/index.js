@@ -11,7 +11,7 @@ import { apiBaseUrl } from '../../actions'
 
 import socketIOClient from 'socket.io-client'
 
-import { main, cards, btn_add } from './styles'
+import { main, cards, btn_add, no_posts, icon_info, no_data } from './styles'
 
 import Header from '../Header'
 import Card from '../Card'
@@ -54,6 +54,12 @@ const App = () => {
             />
           ))}
         </div>
+        {!posts.length &&
+          <div css={no_data}>
+            <i className="fas fa-exclamation-triangle" css={icon_info}></i>
+            <h3 css={no_posts}>Não existem posts para visualizar.</h3>
+          </div>
+        }
       </div>
     </div>
   )
