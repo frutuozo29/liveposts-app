@@ -16,6 +16,7 @@ export const btn_add = css`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0px 6px 6px rgb(0, 0, 0);
   
   @media (max-width: 420px) {
     margin: 18px 12px;  
