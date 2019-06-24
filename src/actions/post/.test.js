@@ -141,4 +141,12 @@ describe('Actions test', () => {
     })
   })
 
+  test('Action setIsIncluding', () => {
+    const action = actions.setIsIncluding(true)
+    expect(action).toEqual({
+      type: 'SET_ISINCLUDING',
+      payload: true
+    })
+  })
+
 })
