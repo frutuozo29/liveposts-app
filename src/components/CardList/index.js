@@ -21,31 +21,26 @@ const CardList = () => {
 
   useEffect(() => { !posts.length && !isLoading && !hasError && dispatch(postActions.getPosts()) }, [isLoading, hasError, posts, dispatch])
 
-  return (
-    <div data-testid="cardlist">
-      {posts && posts.length &&
-        <div css={cards}>
-          {posts.sort((a, b) => b.votes - a.votes).map(post => (
-            <Card
-              {...{ post }}
-              key={post._id}
-              upVote={(() => dispatch(postActions.updateVotes(post._id, 1)))}
-              downVote={(() => dispatch(postActions.updateVotes(post._id, -1)))}
-            />
-          ))
-          }
-        </div>
-      }
-      {!isLoading && !posts.length &&
-        <Message icon="fa-exclamation-triangle" text="Não existem posts para visualizar." />
-      }
-      {isLoading &&
-        <Message icon="fa-info-circle" text="Carregando..." />
-      }
-      {hasError &&
-        <Message icon="fa-times" text="Ocorreu um erro ao carregar os dados, tente novamente." />
-      }
-    </div>
-  )
+  if (isLoading) {
+    return <Message testid="cardlist" icon="fa-info-circle" text="Carregando..." />
+  } else if (hasError) {
+    return <Message testid="cardlist" icon="fa-times" text="Ocorreu um erro ao carregar os dados, tente novamente." />
+  } else if (posts && posts.length) {
+    return (
+      <div data-testid="cardlist" css={cards}>
+        {posts.sort((a, b) => b.votes - a.votes).map(post => (
+          <Card
+            {...{ post }}
+            key={post._id}
+            upVote={(() => dispatch(postActions.updateVotes(post._id, 1)))}
+            downVote={(() => dispatch(postActions.updateVotes(post._id, -1)))}
+          />
+        ))
+        }
+      </div>
+    )
+  } else {
+    return <Message testid="cardlist" icon="fa-exclamation-triangle" text="Não existem posts para visualizar." />
+  }
 }
 export default CardList

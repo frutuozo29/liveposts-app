@@ -47,3 +47,5 @@ export const updateVotes = (id, vote) => (dispacth) => {
 }
 
 export const setVotes = (id, votes) => ({ type: 'SET_VOTES', payload: { id, votes } })
+
+export const setIsIncluding = (isIncluding) => ({ type: 'SET_VOTES', payload: isIncluding })

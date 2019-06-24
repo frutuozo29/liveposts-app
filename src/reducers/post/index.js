@@ -4,7 +4,8 @@ const initialState = {
   isLoading: false,
   hasError: false,
   isPosting: false,
-  hasPostError: false
+  hasPostError: false,
+  isIncluding: false
 }
 
 const posts = (state = initialState, action) => {
@@ -51,6 +52,11 @@ const posts = (state = initialState, action) => {
         items: state.items.map(item =>
           item._id === action.payload.id ? { ...item, votes: action.payload.votes } : item
         )
+      }
+    case 'SET_ISINCLUDING':
+      return {
+        ...state,
+        isIncluding: action.payload
       }
     default:
       return state

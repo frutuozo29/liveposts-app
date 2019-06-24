@@ -5,6 +5,7 @@ import { jsx } from '@emotion/core'
 import { useEffect, useState } from 'react'
 
 import Routes from '../../routes'
+import { Link } from 'react-router-dom'
 // react-redux
 import { useDispatch } from 'react-redux'
 import * as postActions from '../../actions/post'
@@ -36,7 +37,7 @@ const App = () => {
   return (
     <div className="App" data-testid="app">
       <Header />
-      <button css={btn_add}>Novo Post</button>
+      <Link to="/newpost"><button css={btn_add}>Novo Post</button></Link>
       <div css={main}>
         <Routes />
       </div>

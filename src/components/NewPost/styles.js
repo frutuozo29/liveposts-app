@@ -11,9 +11,27 @@ export const main = css`
 
 export const form = css`
   display: grid;
-  grid-auto-rows: 28px 22px 28px 150px 32px;
+  grid-auto-rows: auto auto auto auto 38px;
+  justify-items: start;
   grid-gap: 4px;
   padding: 12px 12px;
+
+  > span {
+    color: #FFF;
+    align-self: self-end;
+    margin-top: 8px;
+  }
+
+  > input, textarea {
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: none;
+  }
+
+  > textarea {
+    resize: none;
+    width: 100%;
+  }
 `
 
 export const title = css`
@@ -48,16 +66,15 @@ const btn_default = css`
 export const btn_criar = css`
   ${btn_default}  
   
-  background-color: #FFF;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 `
 
 export const btn_cancelar = css`
   ${btn_default}
 
-  background-color: #FFF;
-`
-
-export const span = css`
-  color: #FFF;
-  align-self: self-end;
+  color: #fff;
+  background-color: #545b62;
+  border-color: #4e555b;
 `

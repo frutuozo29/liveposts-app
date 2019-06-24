@@ -7,7 +7,8 @@ describe('Reducer test', () => {
     isLoading: false,
     hasError: false,
     isPosting: false,
-    hasPostError: false
+    hasPostError: false,
+    isIncluding: false
   }
 
   test('return default value store', () => {
@@ -96,4 +97,14 @@ describe('Reducer test', () => {
 
     expect(post(stateLocal, action)).toEqual({ ...stateLocal })
   })
+
+  test('return when SET_ISINCLUDING', () => {
+    const action = { type: 'SET_ISINCLUDING', payload: true }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isIncluding: true
+    })
+  })
+
 })
