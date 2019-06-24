@@ -11,8 +11,8 @@ export const main = css`
 
 export const form = css`
   display: grid;
-  grid-auto-rows: 18px 22px 18px 150px 32px;
-  grid-gap: 10px;
+  grid-auto-rows: 28px 22px 28px 150px 32px;
+  grid-gap: 4px;
   padding: 12px 12px;
 `
 
@@ -35,7 +35,8 @@ export const title = css`
 export const botoes = css`
   display: grid;
   grid-template-columns: 80px 80px;
-  grid-gap: 12px;
+  grid-gap: 10px;
+  padding-top: 8px;
 `
 const btn_default = css`
   border: none;
@@ -54,4 +55,9 @@ export const btn_cancelar = css`
   ${btn_default}
 
   background-color: #FFF;
+`
+
+export const span = css`
+  color: #FFF;
+  align-self: self-end;
 `
