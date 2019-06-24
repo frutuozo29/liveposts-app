@@ -12,13 +12,16 @@ import thunk from 'redux-thunk';
 import { Provider } from "react-redux";
 // reducer
 import reducers from './reducers'
+// router
+import { BrowserRouter as Router } from "react-router-dom";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const enhancer = composeEnhancers(applyMiddleware(thunk))
 const store = createStore(reducers, enhancer)
 
-
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>, document.getElementById('root'));
