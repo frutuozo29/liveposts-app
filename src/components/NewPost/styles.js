@@ -7,6 +7,7 @@ export const main = css`
   overflow: hidden;
   grid-template-rows: 1fr auto;
   background-color: #065D79;
+  margin-top: 32px;
 `
 
 export const form = css`
@@ -61,12 +62,12 @@ const btn_default = css`
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
 `
 
 export const btn_criar = css`
   ${btn_default}  
   
-  color: #fff;
   background-color: #007bff;
   border-color: #007bff;
 `
@@ -74,7 +75,6 @@ export const btn_criar = css`
 export const btn_cancelar = css`
   ${btn_default}
 
-  color: #fff;
   background-color: #545b62;
   border-color: #4e555b;
 `

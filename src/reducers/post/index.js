@@ -46,6 +46,25 @@ const posts = (state = initialState, action) => {
         isPosting: false,
         hasPostError: true
       }
+    case 'CREATE_POST_REQUEST':
+      return {
+        ...state,
+        isPosting: true,
+        hasPostError: false
+      }
+    case 'CREATE_POST_SUCCESS':
+      return {
+        ...state,
+        isPosting: false,
+        hasPostError: false,
+        items: []
+      }
+    case 'CREATE_POST_ERROR':
+      return {
+        ...state,
+        isPosting: false,
+        hasPostError: true
+      }
     case 'SET_VOTES':
       return {
         ...state,

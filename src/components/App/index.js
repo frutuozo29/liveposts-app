@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import Routes from '../../routes'
 import { Link } from 'react-router-dom'
 // react-redux
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import * as postActions from '../../actions/post'
 import { apiBaseUrl } from '../../actions'
 
@@ -20,6 +20,7 @@ import Header from '../Header'
 const App = () => {
 
   const dispatch = useDispatch()
+  const isIncluding = useSelector(state => state.posts.isIncluding)
   const [hasSocket, setHasSocket] = useState(false)
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const App = () => {
   return (
     <div className="App" data-testid="app">
       <Header />
-      <Link to="/newpost"><button css={btn_add}>Novo Post</button></Link>
+      <Link hidden={isIncluding} to="/newpost"><button css={btn_add}>Novo Post</button></Link>
       <div css={main}>
         <Routes />
       </div>
