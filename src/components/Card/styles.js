@@ -6,7 +6,7 @@ export const card = css`
   border: 1px solid rgba(0,0,0,.125);
   overflow: hidden;
   grid-template-rows: 30px 150px 40px;
-  background-color: #065D79;
+  background-color: #0066cc;
 `
 export const card_title = css`
   position: relative;

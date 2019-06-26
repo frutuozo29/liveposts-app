@@ -24,17 +24,13 @@ const NewPost = ({ history }) => {
     history.push('/')
   }
 
-  const handlerCancel = () => {
-    dispatch(postActions.setIsIncluding(false))
-    history.push('/')
-  }
-
   return (
     <div data-testid="newpost" css={main}>
       <h3 css={title}>Novo post</h3>
       <form css={form} onSubmit={handlerSubmit}>
         <span>Nome:</span>
         <input
+          data-testid="input"
           required
           placeholder="Digite um nome para o post"
           value={name}
@@ -52,7 +48,10 @@ const NewPost = ({ history }) => {
           <button css={btn_criar} type="submit">Criar</button>
           <button
             css={btn_cancelar}
-            onClick={handlerCancel}
+            onClick={() => {
+              dispatch(postActions.setIsIncluding(false))
+              history.push('/')
+            }}
           >Cancelar</button>
         </div>
       </form>

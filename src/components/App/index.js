@@ -13,7 +13,7 @@ import { apiBaseUrl } from '../../actions'
 
 import socketIOClient from 'socket.io-client'
 
-import { main, btn_add } from './styles'
+import { app, main, btn_add } from './styles'
 
 import Header from '../Header'
 
@@ -36,7 +36,7 @@ const App = () => {
 
 
   return (
-    <div className="App" data-testid="app">
+    <div css={app} data-testid="app">
       <Header />
       <Link hidden={isIncluding} to="/newpost"><button css={btn_add}>Novo Post</button></Link>
       <div css={main}>
