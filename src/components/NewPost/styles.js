@@ -2,17 +2,18 @@ import { css } from '@emotion/core'
 
 export const main = css`
   display: grid;
+  grid-auto-rows: min-content;
   border-radius: 6px;
   border: 1px solid rgba(0,0,0,.125);
   overflow: hidden;
-  grid-template-rows: 1fr auto;
-  background-color: #065D79;
+  background-color: #0066cc;
   margin-top: 32px;
+  width: 100%;
+  height: min-content;
 `
 
 export const form = css`
   display: grid;
-  grid-auto-rows: auto auto auto auto 38px;
   justify-items: start;
   grid-gap: 4px;
   padding: 12px 12px;
@@ -24,8 +25,8 @@ export const form = css`
   }
 
   > input, textarea {
-    padding: 3px 6px;
-    border-radius: 3px;
+    padding: 4px 8px;
+    border-radius: 6px;
     border: none;
   }
 
@@ -59,10 +60,11 @@ export const botoes = css`
 `
 const btn_default = css`
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
   color: #fff;
+  height: 32px;
 `
 
 export const btn_criar = css`

@@ -38,7 +38,9 @@ const App = () => {
   return (
     <div css={app} data-testid="app">
       <Header />
-      <Link hidden={isIncluding} to="/newpost"><button css={btn_add}>Novo Post</button></Link>
+      {!isIncluding &&
+        <Link css={btn_add} to="/newpost">Novo Post</Link>
+      }
       <div css={main}>
         <Routes />
       </div>
