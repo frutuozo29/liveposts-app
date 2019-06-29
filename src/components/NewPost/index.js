@@ -38,6 +38,7 @@ const NewPost = ({ history }) => {
         ></input>
         <span>Texto:</span>
         <textarea
+          data-testid="textarea"
           rows="10"
           required
           placeholder="Digite um texto para o post"
@@ -47,6 +48,7 @@ const NewPost = ({ history }) => {
         <div css={botoes}>
           <button css={btn_criar} type="submit">Criar</button>
           <button
+            data-testid="btn-cancelar"
             css={btn_cancelar}
             onClick={() => {
               dispatch(postActions.setIsIncluding(false))

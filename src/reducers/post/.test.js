@@ -107,4 +107,34 @@ describe('Reducer test', () => {
     })
   })
 
+  test('return when CREATE_POST_REQUEST', () => {
+    const action = { type: 'CREATE_POST_REQUEST' }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isPosting: true,
+      hasPostError: false
+    })
+  })
+
+  test('return when CREATE_POST_SUCCESS', () => {
+    const action = { type: 'CREATE_POST_SUCCESS' }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isPosting: false,
+      hasPostError: false
+    })
+  })
+
+  test('return when CREATE_POST_ERROR', () => {
+    const action = { type: 'CREATE_POST_ERROR' }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isPosting: false,
+      hasPostError: true
+    })
+  })
+
 })
