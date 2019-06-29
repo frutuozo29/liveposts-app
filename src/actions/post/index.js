@@ -47,3 +47,31 @@ export const updateVotes = (id, vote) => (dispacth) => {
 }
 
 export const setVotes = (id, votes) => ({ type: 'SET_VOTES', payload: { id, votes } })
+
+export const setIsIncluding = (isIncluding) => ({ type: 'SET_ISINCLUDING', payload: isIncluding })
+
+export const createPostRequest = () => ({ type: 'CREATE_POST_REQUEST' })
+
+export const createPostSuccess = () => ({ type: 'CREATE_POST_SUCCESS' })
+
+export const createPostError = () => ({ type: 'CREATE_POST_ERROR' })
+
+export const createPost = (name, description) => (dispacth) => {
+  dispacth(createPostRequest())
+  const body = { name, description }
+
+  return fetch(`${apiBaseUrl}/post`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  })
+    .then(response => {
+      if (!response.ok) throw Error()
+
+      return response
+    })
+    .then(() => dispacth(createPostSuccess()))
+    .catch(() => dispacth(createPostError()))
+}

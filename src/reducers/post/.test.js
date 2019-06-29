@@ -7,7 +7,8 @@ describe('Reducer test', () => {
     isLoading: false,
     hasError: false,
     isPosting: false,
-    hasPostError: false
+    hasPostError: false,
+    isIncluding: false
   }
 
   test('return default value store', () => {
@@ -96,4 +97,44 @@ describe('Reducer test', () => {
 
     expect(post(stateLocal, action)).toEqual({ ...stateLocal })
   })
+
+  test('return when SET_ISINCLUDING', () => {
+    const action = { type: 'SET_ISINCLUDING', payload: true }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isIncluding: true
+    })
+  })
+
+  test('return when CREATE_POST_REQUEST', () => {
+    const action = { type: 'CREATE_POST_REQUEST' }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isPosting: true,
+      hasPostError: false
+    })
+  })
+
+  test('return when CREATE_POST_SUCCESS', () => {
+    const action = { type: 'CREATE_POST_SUCCESS' }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isPosting: false,
+      hasPostError: false
+    })
+  })
+
+  test('return when CREATE_POST_ERROR', () => {
+    const action = { type: 'CREATE_POST_ERROR' }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      isPosting: false,
+      hasPostError: true
+    })
+  })
+
 })

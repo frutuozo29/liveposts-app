@@ -141,4 +141,51 @@ describe('Actions test', () => {
     })
   })
 
+  test('Action setIsIncluding', () => {
+    const action = actions.setIsIncluding(true)
+    expect(action).toEqual({
+      type: 'SET_ISINCLUDING',
+      payload: true
+    })
+  })
+
+  test('Action createPostRequest', () => {
+    const action = actions.createPostRequest({})
+    expect(action).toEqual({ type: 'CREATE_POST_REQUEST' })
+  })
+
+  test('Action createPostSuccess', () => {
+    const action = actions.createPostSuccess()
+    expect(action).toEqual({ type: 'CREATE_POST_SUCCESS' })
+  })
+
+  test('Action createPostError', () => {
+    const action = actions.createPostError()
+    expect(action).toEqual({ type: 'CREATE_POST_ERROR' })
+  })
+
+  test('Action createPost', async () => {
+    fetchMock.mock(`${URL_MOCK_API}/post`, response)
+
+    const expectedActions = [
+      { type: 'CREATE_POST_REQUEST' },
+      { type: 'CREATE_POST_SUCCESS' }
+    ]
+
+    await store.dispatch(actions.createPost('Teste', 'Post de teste'))
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  test('Action createPost returns 500', async () => {
+    fetchMock.mock(`${URL_MOCK_API}/post`, 500)
+
+    const expectedActions = [
+      { type: 'CREATE_POST_REQUEST' },
+      { type: 'CREATE_POST_ERROR' }
+    ]
+
+    await store.dispatch(actions.createPost('Teste', 'Post de teste'))
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
 })

@@ -4,7 +4,8 @@ const initialState = {
   isLoading: false,
   hasError: false,
   isPosting: false,
-  hasPostError: false
+  hasPostError: false,
+  isIncluding: false
 }
 
 const posts = (state = initialState, action) => {
@@ -45,12 +46,36 @@ const posts = (state = initialState, action) => {
         isPosting: false,
         hasPostError: true
       }
+    case 'CREATE_POST_REQUEST':
+      return {
+        ...state,
+        isPosting: true,
+        hasPostError: false
+      }
+    case 'CREATE_POST_SUCCESS':
+      return {
+        ...state,
+        isPosting: false,
+        hasPostError: false,
+        items: []
+      }
+    case 'CREATE_POST_ERROR':
+      return {
+        ...state,
+        isPosting: false,
+        hasPostError: true
+      }
     case 'SET_VOTES':
       return {
         ...state,
         items: state.items.map(item =>
           item._id === action.payload.id ? { ...item, votes: action.payload.votes } : item
         )
+      }
+    case 'SET_ISINCLUDING':
+      return {
+        ...state,
+        isIncluding: action.payload
       }
     default:
       return state
