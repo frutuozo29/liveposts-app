@@ -8,6 +8,7 @@ import * as postActions from '../../actions/post'
 
 import { cards } from './styles'
 import Card from '../Card'
+import Loading from '../Loading'
 import Message from '../Message'
 
 // react-redux
@@ -22,7 +23,7 @@ const CardList = () => {
   useEffect(() => { !posts.length && !isLoading && !hasError && dispatch(postActions.getPosts()) }, [isLoading, hasError, posts, dispatch])
 
   if (isLoading) {
-    return <Message testid="cardlist" icon="fa-info-circle" text="Carregando..." />
+    return <Loading testid="cardlist" />
   } else if (hasError) {
     return <Message testid="cardlist" icon="fa-times" text="Ocorreu um erro ao carregar os dados, tente novamente." />
   } else if (posts && posts.length) {
