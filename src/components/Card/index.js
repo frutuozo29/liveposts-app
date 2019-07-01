@@ -2,6 +2,8 @@
 
 import { jsx } from '@emotion/core'
 
+import { Link } from 'react-router-dom'
+
 import {
   card, card_title, card_description, card_footer,
   card_actions, read_more, icon_action_up, icon_action_down
@@ -12,7 +14,7 @@ const Card = ({ post, upVote, downVote }) => (
     <h3 css={card_title}>{post.name}</h3>
     <p css={card_description}>{post.description}</p>
     <div css={card_footer}>
-      <a css={read_more} href="/#">Leia mais...</a>
+      <Link css={read_more} to={`/viewpost/${post._id}`}>Leia mais...</Link>
       <div css={card_actions}>
         <i
           className="far fa-thumbs-up"

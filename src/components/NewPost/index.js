@@ -12,8 +12,9 @@ const NewPost = ({ history }) => {
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const isIncluding = useSelector(state => state.posts.isIncluding)
+  const isIncluding = useSelector(({ posts }) => posts.isIncluding)
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(postActions.setIsIncluding(true))
   }, [isIncluding, dispatch])
