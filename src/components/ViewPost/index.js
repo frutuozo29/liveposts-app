@@ -23,6 +23,7 @@ const ViewPost = ({ history, match }) => {
         {postSelected.description}
       </p>
       <button
+        data-testid="btn-voltar"
         css={btn_voltar}
         onClick={() => {
           history.push('/')
