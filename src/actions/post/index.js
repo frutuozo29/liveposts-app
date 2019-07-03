@@ -75,3 +75,16 @@ export const createPost = (name, description) => (dispacth) => {
     .then(() => dispacth(createPostSuccess()))
     .catch(() => dispacth(createPostError()))
 }
+
+export const setPostSelected = (payload) => ({ type: 'SET_POST_SELECTED', payload })
+
+export const getPostById = (id) => (dispacth) => {
+  return fetch(`${apiBaseUrl}/post/${id}`)
+    .then(response => {
+      if (!response.ok) throw Error()
+
+      return response
+    })
+    .then(response => response.json())
+    .then((response) => dispacth(setPostSelected(response)))
+}

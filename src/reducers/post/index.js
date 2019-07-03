@@ -5,7 +5,8 @@ const initialState = {
   hasError: false,
   isPosting: false,
   hasPostError: false,
-  isIncluding: false
+  isIncluding: false,
+  postSelected: {}
 }
 
 const posts = (state = initialState, action) => {
@@ -19,7 +20,8 @@ const posts = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        items: action.payload
+        items: action.payload,
+        postSelected: {}
       }
     case 'GET_POSTS_REQUEST_ERROR':
       return {
@@ -27,6 +29,11 @@ const posts = (state = initialState, action) => {
         isLoading: false,
         hasError: true,
         items: []
+      }
+    case 'SET_POST_SELECTED':
+      return {
+        ...state,
+        postSelected: action.payload
       }
     case 'UPDATE_VOTES_REQUEST':
       return {

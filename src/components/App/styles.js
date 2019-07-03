@@ -4,6 +4,7 @@ export const app = css`
   display: flex;
   height: 100vh;
   flex-direction: column;
+  height: max-content;
 `
 
 export const main = css`

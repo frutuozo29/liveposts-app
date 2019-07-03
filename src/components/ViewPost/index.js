@@ -1,23 +1,30 @@
 /** @jsx jsx */
 
 import { jsx } from '@emotion/core'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import { getPostById } from '../../actions/post'
 import { main, title, description, btn_voltar } from './styles'
 
 const ViewPost = ({ history, match }) => {
 
-  const post = useSelector(({ posts }) => posts.items.find((post) => post._id === match.params.id))
+  const dispatch = useDispatch()
+  const postSelected = useSelector(({ posts }) => posts.postSelected)
 
-  if (!post) {
+  useEffect(() => {
+    dispatch(getPostById(match.params.id))
+  }, [dispatch, match])
+
+  if (!postSelected) {
     history.push('/')
   }
   else
     return (
       <div data-testid="viewpost" css={main}>
-        <h3 css={title}>{post.name}</h3>
+        <h3 css={title}>{postSelected.name}</h3>
         <p css={description}>
-          {post.description}
+          {postSelected.description}
         </p>
         <button
           css={btn_voltar}
