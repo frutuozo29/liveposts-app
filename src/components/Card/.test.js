@@ -1,5 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import { BrowserRouter as Router } from "react-router-dom";
+
 import Card from '../Card'
 
 describe('Card tests', () => {
@@ -16,7 +18,7 @@ describe('Card tests', () => {
 
   test('Render component', () => {
 
-    const { getByTestId } = render(<Card {...props} />)
+    const { getByTestId } = render(<Router><Card {...props} /></Router>)
 
     expect(getByTestId('card')).toBeInTheDocument(true)
   })

@@ -16,24 +16,20 @@ const ViewPost = ({ history, match }) => {
     dispatch(getPostById(match.params.id))
   }, [dispatch, match])
 
-  if (!postSelected) {
-    history.push('/')
-  }
-  else
-    return (
-      <div data-testid="viewpost" css={main}>
-        <h3 css={title}>{postSelected.name}</h3>
-        <p css={description}>
-          {postSelected.description}
-        </p>
-        <button
-          css={btn_voltar}
-          onClick={() => {
-            history.push('/')
-          }}
-        >Voltar</button>
-      </div>
-    )
+  return (
+    <div data-testid="viewpost" css={main}>
+      <h3 css={title}>{postSelected.name}</h3>
+      <p css={description}>
+        {postSelected.description}
+      </p>
+      <button
+        css={btn_voltar}
+        onClick={() => {
+          history.push('/')
+        }}
+      >Voltar</button>
+    </div>
+  )
 
 }
 

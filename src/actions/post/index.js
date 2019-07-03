@@ -87,4 +87,5 @@ export const getPostById = (id) => (dispacth) => {
     })
     .then(response => response.json())
     .then((response) => dispacth(setPostSelected(response)))
+    .catch(() => { })
 }
