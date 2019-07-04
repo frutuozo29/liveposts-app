@@ -214,4 +214,33 @@ describe('Actions test', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
+  test('Action deletePostRequestSucces', () => {
+    const action = actions.deletePostRequestSucces('1')
+    expect(action).toEqual({ type: 'DELETE_POST_REQUEST_SUCCESS', id: '1' })
+  })
+
+  test('Action deletePostById', async () => {
+    fetchMock.mock(`${URL_MOCK_API}/post/1`, response)
+
+    const expectedActions = [{
+      type: 'DELETE_POST_REQUEST_SUCCESS',
+      id: '1'
+    }]
+
+    await store.dispatch(actions.deletePostById('1'))
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  test('Action deletePostById returns 500', async () => {
+    fetchMock.mock(`${URL_MOCK_API}/post/1`, 500)
+
+    const expectedActions = [{
+      type: 'SET_POST_SELECTED',
+      payload: {}
+    }]
+
+    await store.dispatch(actions.deletePostById('1'))
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
 })

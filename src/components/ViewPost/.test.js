@@ -38,4 +38,12 @@ describe('ViewPost tests', () => {
     fireEvent.click(button)
     expect(button).toBeInTheDocument(true)
   })
+
+  test('Click btn-excluir', () => {
+    const { getByTestId } = render(<Provider store={store}><ViewPost {...props} /></Provider>)
+    const button = getByTestId('btn-excluir')
+    fireEvent.click(button)
+    expect(button).toBeInTheDocument(true)
+  })
+
 })

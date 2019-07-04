@@ -34,15 +34,26 @@ export const description = css`
   color: #FFF;
 `
 
-export const btn_voltar = css`
+const btn_default = css`
   border: none;
   border-radius: 6px;
   cursor: pointer;
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
   color: #fff;
   height: 32px;
-  background-color: #545b62;
-  border-color: #4e555b;
   width: 80px;
-  margin: 8px 12px;
+  border-color: #4e555b;
+`
+
+export const btn_voltar = css`
+  ${btn_default}
+  background-color: #545b62;
+  margin: 8px 8px 0 12px;
+`
+
+export const btn_excluir = css`
+  ${btn_default}
+
+  background-color: #ff3333;
+  margin: 8px 0;
 `

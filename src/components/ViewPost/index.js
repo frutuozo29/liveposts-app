@@ -4,8 +4,8 @@ import { jsx } from '@emotion/core'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getPostById } from '../../actions/post'
-import { main, title, description, btn_voltar } from './styles'
+import { getPostById, deletePostById } from '../../actions/post'
+import { main, title, description, btn_voltar, btn_excluir } from './styles'
 
 const ViewPost = ({ history, match }) => {
 
@@ -22,13 +22,19 @@ const ViewPost = ({ history, match }) => {
       <p css={description}>
         {postSelected.description}
       </p>
-      <button
-        data-testid="btn-voltar"
-        css={btn_voltar}
-        onClick={() => {
-          history.push('/')
-        }}
-      >Voltar</button>
+      <div>
+        <button data-testid="btn-voltar" css={btn_voltar}
+          onClick={() => {
+            history.push('/')
+          }}
+        >Voltar</button>
+        <button data-testid="btn-excluir" css={btn_excluir}
+          onClick={() => {
+            dispatch(deletePostById(match.params.id))
+            history.push('/')
+          }}
+        >Excluir</button>
+      </div>
     </div>
   )
 
