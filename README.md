@@ -52,3 +52,8 @@ yarn build
   * jest-dom: ^3.5.0,
   * node-fetch: ^2.6.0,
   * redux-mock-store: ^1.5.3
+  
+### `Imagens`
+![ImagemMobile](https://raw.githubusercontent.com/frutuozo29/liveposts-app/master/src/assets/img/liveposts-mobile.jpg)
+
+![ImagemMobile](https://raw.githubusercontent.com/frutuozo29/liveposts-app/master/src/assets/img/liveposts-web.jpg)
