@@ -44,4 +44,5 @@ export const btn_voltar = css`
   background-color: #545b62;
   border-color: #4e555b;
   width: 80px;
+  margin: 8px 12px;
 `
