@@ -57,3 +57,6 @@ yarn build
 ![ImagemMobile](https://raw.githubusercontent.com/frutuozo29/liveposts-app/master/src/assets/img/liveposts-mobile.jpg)
 
 ![ImagemMobile](https://raw.githubusercontent.com/frutuozo29/liveposts-app/master/src/assets/img/liveposts-web.jpg)
+
+### License
+https://camo.githubusercontent.com/743d6ca437fec2ad80985c1208501b7c7b4b97ae/68747470733a2f2f696d672e736869656c64732e696f2f7061636b61676973742f6c2f646f637472696e652f6f726d2e737667
