@@ -89,3 +89,19 @@ export const getPostById = (id) => (dispacth) => {
     .then((response) => dispacth(setPostSelected(response)))
     .catch(() => { })
 }
+
+export const deletePostRequestSucces = (id) => ({ type: 'DELETE_POST_REQUEST_SUCCESS', id })
+
+export const deletePostById = (id) => (dispacth) => {
+  return fetch(`${apiBaseUrl}/post/${id}`, {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (!response.ok) throw Error()
+
+      return response
+    })
+    .then(response => response.json())
+    .then(() => dispacth(deletePostRequestSucces(id)))
+    .catch(() => dispacth(setPostSelected({})))
+}

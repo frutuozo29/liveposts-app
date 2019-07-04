@@ -4,7 +4,7 @@ import { jsx } from '@emotion/core'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getPostById } from '../../actions/post'
+import { getPostById, deletePostById } from '../../actions/post'
 import { main, title, description, btn_voltar, btn_excluir } from './styles'
 
 const ViewPost = ({ history, match }) => {
@@ -30,6 +30,7 @@ const ViewPost = ({ history, match }) => {
         >Voltar</button>
         <button data-testid="btn-excluir" css={btn_excluir}
           onClick={() => {
+            dispatch(deletePostById(match.params.id))
             history.push('/')
           }}
         >Excluir</button>

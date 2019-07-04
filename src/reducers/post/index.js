@@ -84,6 +84,12 @@ const posts = (state = initialState, action) => {
         ...state,
         isIncluding: action.payload
       }
+    case 'DELETE_POST_REQUEST_SUCCESS':
+      return {
+        ...state,
+        items: state.items.filter(item => item._id !== action.id),
+        postSelected: {}
+      }
     default:
       return state
   }
