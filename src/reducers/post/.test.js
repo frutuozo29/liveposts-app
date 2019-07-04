@@ -147,4 +147,30 @@ describe('Reducer test', () => {
     })
   })
 
+  test('return when DELETE_POST_REQUEST_SUCCESS', () => {
+    let stateLocal = {
+      ...state,
+      items: [
+        {
+          "_id": "5d0aced050e88427a0603abx",
+          "name": "Primeiro texto livro desse artigo",
+          "description": "Existem muitas variações disponíveis de passagens de Lorem Ipsum, mas a maioria sofreu algum tipo de alteração, seja por inserção de passagens com humor, ou palavras aleatórias que não parecem nem um pouco convincentes.",
+          "votes": 49
+        },
+        {
+          "_id": "5d0aced050e88427a0603abb",
+          "name": "Primeiro texto livro desse artigo",
+          "description": "Existem muitas variações disponíveis de passagens de Lorem Ipsum, mas a maioria sofreu algum tipo de alteração, seja por inserção de passagens com humor, ou palavras aleatórias que não parecem nem um pouco convincentes.",
+          "votes": 49
+        }
+      ]
+    }
+    const action = { type: 'DELETE_POST_REQUEST_SUCCESS', id: '5d0aced050e88427a0603abx' }
+
+    expect(post(stateLocal, action)).toEqual({
+      ...stateLocal,
+      items: stateLocal.items.filter(item => item._id !== action.id)
+    })
+  })
+
 })
