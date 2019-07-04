@@ -8,7 +8,8 @@ describe('Reducer test', () => {
     hasError: false,
     isPosting: false,
     hasPostError: false,
-    isIncluding: false
+    isIncluding: false,
+    postSelected: {}
   }
 
   test('return default value store', () => {
@@ -104,6 +105,15 @@ describe('Reducer test', () => {
     expect(post(undefined, action)).toEqual({
       ...state,
       isIncluding: true
+    })
+  })
+
+  test('return when SET_POST_SELECTED', () => {
+    const action = { type: 'SET_POST_SELECTED', payload: {} }
+
+    expect(post(undefined, action)).toEqual({
+      ...state,
+      postSelected: {}
     })
   })
 

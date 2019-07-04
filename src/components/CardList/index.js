@@ -16,9 +16,9 @@ import Message from '../Message'
 const CardList = () => {
 
   const dispatch = useDispatch()
-  const posts = useSelector(state => state.posts.items)
-  const isLoading = useSelector(state => state.posts.isLoading)
-  const hasError = useSelector(state => state.posts.hasError)
+  const posts = useSelector(({ posts }) => posts.items)
+  const isLoading = useSelector(({ posts }) => posts.isLoading)
+  const hasError = useSelector(({ posts }) => posts.hasError)
 
   useEffect(() => { !posts.length && !isLoading && !hasError && dispatch(postActions.getPosts()) }, [isLoading, hasError, posts, dispatch])
 

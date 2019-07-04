@@ -188,4 +188,30 @@ describe('Actions test', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
+  test('Action setPostSelected', () => {
+    const action = actions.setPostSelected({})
+    expect(action).toEqual({ type: 'SET_POST_SELECTED', payload: {} })
+  })
+
+  test('Action getPostById', async () => {
+    fetchMock.mock(`${URL_MOCK_API}/post/1`, response)
+
+    const expectedActions = [{
+      type: 'SET_POST_SELECTED',
+      payload: response
+    }]
+
+    await store.dispatch(actions.getPostById('1'))
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  test('Action getPostById returns 500', async () => {
+    fetchMock.mock(`${URL_MOCK_API}/post/1`, 500)
+
+    const expectedActions = []
+
+    await store.dispatch(actions.getPostById('1'))
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
 })
