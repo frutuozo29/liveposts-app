@@ -13,3 +13,6 @@ jobs:
       - store_artifacts:
           path: ./coverage
           destination: artifact-file
+      - run:
+          name: coverage
+          command: yarn coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls --verbose    
